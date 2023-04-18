@@ -209,6 +209,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message(
+      'Clear',
+      name: 'clear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a date`
+  String get selectADate {
+    return Intl.message(
+      'Select a date',
+      name: 'selectADate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

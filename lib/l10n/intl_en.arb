@@ -14,5 +14,8 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "submit": "Submit",
-    "search": "Search by name..."
+    "search": "Search by name...",
+    "clear": "Clear",
+    "selectADate": "Select a date",
+    "apply": "Apply"
 }

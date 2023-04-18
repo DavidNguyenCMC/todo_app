@@ -21,7 +21,7 @@ class DateTimeFormat {
   static const String EE_DD_MMMM_YY = 'EE, dd MMMM yy';
   static const String EE_MMM_DD_HH_MM_A = 'EE, MMM dd @ hh:mm a';
   static const String HH_A = 'HHa';
-  static const String DD_MMM_YYYY_HH_MM = 'dd MMM yyyy @ hh:mm a';
+  static const String DD_MMM_YYYY_HH_MM = 'dd MMM yyyy hh:mm a';
 }
 
 extension DateTimeX on DateTime {

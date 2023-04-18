@@ -11,9 +11,11 @@ import 'package:todo_app/common/widgets/toast/toast.dart';
 import 'package:todo_app/pages/create_task/bloc/create_task_event.dart';
 
 import '../../common/enums/status.dart';
+import '../../common/widgets/date_time_field.dart';
 import '../../common/widgets/default_image_widget.dart';
 import '../../common/widgets/dialogs/loading_dialog.dart';
 import '../../common/widgets/platform_image_picker.dart';
+import '../../common/widgets/title_text_field.dart';
 import '../../di/injection.dart';
 import '../../models/task.dart';
 import 'bloc/create_task_bloc.dart';
@@ -61,11 +63,11 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _profileImage(context, task, state),
-                          Text(Strings.localized.name, style: TextStyles.blackNormalBold,),
-                          const TitleSpacing(),
-                          TextFormField(
+                          TitleTextField(
+                            title: Strings.localized.name,
                             initialValue: task?.name,
-                            onChanged: (text) => _bloc.add(CreateTaskChangeNameEvent()..withValue(text)),
+                            onChanged: (text) =>
+                                _bloc.add(CreateTaskChangeNameEvent()..withValue(text)),
                             validator: (text) {
                               if ((text ?? '').isEmpty) {
                                 return 'Name is required';
@@ -73,12 +75,19 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                             },
                           ),
                           const Spacing(),
-                          Text(Strings.localized.description, style: TextStyles.blackNormalBold,),
-                          const TitleSpacing(),
-                          TextFormField(
+                          TitleTextField(
+                            title: Strings.localized.description,
                             initialValue: task?.desc,
-                            onChanged: (text) => _bloc.add(CreateTaskChangeDescEvent()..withValue(text)),
+                            onChanged: (text) =>
+                                _bloc.add(CreateTaskChangeDescEvent()..withValue(text)),
                             maxLines: 4,
+                          ),
+                          const Spacing(),
+                          DateTimeInput(
+                            title: Strings.localized.expiredAt,
+                            initialValue: task?.expiredAt,
+                            dateFormat: DateTimeFormat.DD_MMM_YYYY_HH_MM,
+                            onDateTimeSelected: (date) => _bloc.add(CreateTaskChangeExpiredEvent()..withValue(date)),
                           ),
                         ],
                       ),
@@ -87,9 +96,13 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: SizedBox(width: double.infinity,
+                  child: SizedBox(
+                    width: double.infinity,
                     child: TextButton(
-                      child: Text(Strings.localized.submit, style: TextStyles.whiteNormalRegular,),
+                      child: Text(
+                        Strings.localized.submit,
+                        style: TextStyles.whiteNormalRegular,
+                      ),
                       onPressed: () => _onSaveTapped(context),
                       style: TextButton.styleFrom(backgroundColor: AppColors.primaryColor),
                     ),

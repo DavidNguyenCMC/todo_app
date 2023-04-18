@@ -11,6 +11,8 @@ class AssetImages {
   static const String iconEdit = 'assets/images/svg/ic_edit.svg';
   static const String iconEmpty = 'assets/images/svg/ic_empty_state.svg';
   static const String imgCameraPrimary = 'assets/images/svg/ic_camera_primary.svg';
+  static const String icTime = 'assets/images/svg/ic_time.svg';
+  static const String icCalendar = 'assets/images/svg/ic_calendar.svg';
 }
 
 extension ConvertToImage on String {
